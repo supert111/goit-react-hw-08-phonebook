@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import AppBar from './components/AppBar';
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
@@ -22,6 +23,7 @@ class App extends Component {
     render() {
         return (
             <div className={styles.container}>
+                <AppBar />
                 <div className={styles.wrapper}>
                     <h1>Phonebook</h1>
                     <ContactForm /> 
