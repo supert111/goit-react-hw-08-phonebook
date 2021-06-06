@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import Container from '../components/Container';
 import ContactForm from "../components/ContactForm";
 import ContactList from "../components/ContactList";
 import Filter from "../components/Filter";
@@ -20,15 +21,17 @@ class ContactsView extends Component {
     };
 
     render() {
-        return (    
+        return (
+            <Container>    
                 <div className={styles.wrapper}>
-                    <h1>Phonebook</h1>
+                    <h1 className={styles.title_Phonebook}>Phonebook</h1>
                     <ContactForm /> 
-                    <h2>Contacts</h2>
+                    <h2 className={styles.title_Contacts}>Contacts</h2>
                     <Filter /> 
                     {this.props.isLoading && <h1>Loading...</h1>}
                     <ContactList />
-                </div>          
+                </div>
+            </Container>          
         )
     }
 }

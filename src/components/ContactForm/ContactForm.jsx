@@ -40,7 +40,7 @@ class ContactForm extends Component {
                             onChange={this.handleChange}
                         />
                     </label>
-                    <label htmlFor={phoneInputId}>Number
+                    <label className={styles.label_block} htmlFor={phoneInputId}>Number
                         <input className={styles.input_display}
                             type="tel"
                             name="number"

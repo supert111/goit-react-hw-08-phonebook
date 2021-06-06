@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Switch, Route } from 'react-router-dom';
-import Container from './components/Container';
 import AppBar from './components/AppBar';
+import HomeView from './views/HomeView/index';
 import ContactsView from './views/ContactsView';
-import RegisterView from './views/RegisterView';
+import RegisterView from './views/RegisterView/index';
+import LoginView from "./views/LoginView/index";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import routes from './components/routes';
-// import ContactForm from "./components/ContactForm";
 // import ContactList from "./components/ContactList";
 // import Filter from "./components/Filter";
 //import { fetchContacts, getIsLoading } from './redux/contacts';
@@ -26,17 +27,16 @@ class App extends Component {
 
     render() {
         return (
-            <Container>
+            <>
                 <AppBar />
-                {/* <ContactsView /> */}
             
                 <Switch>
-                    {/* <Route exact path="/" component={HomeView} /> */}
-                    <Route path={routes.register} component={RegisterView} />
-                    {/* <Route path="/login" component={LoginView} /> */}
+                    <Route exact path={routes.home} component={HomeView} />
                     <Route path={routes.contacts} component={ContactsView} />
+                    <Route path={routes.register} component={RegisterView} />
+                    <Route path={routes.login} component={LoginView} />
                 </Switch>
-            </Container>
+            </>
         )
     }
 }

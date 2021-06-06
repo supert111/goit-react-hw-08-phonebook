@@ -1,6 +1,6 @@
 .wrapper {
     max-width: 100%;
-    height: 170px;
+    height: 214px;
     padding: 20px;
     border: 2px solid purple;
     box-shadow: 0px 2px 8px 0px rgba(227, 102, 212, 0.2);
@@ -9,6 +9,8 @@
 
 .input_display {
     display: flex;
+    height: 20px;
+    max-width: 170px;
     margin: 10px 0 20px;
     border: 1px solid purple;
 }
@@ -20,6 +22,9 @@
 }
 
 .button_prime {
+    width: 86px;
+    height: 20px;
+    font-size: 10px;
     border-radius: 5px;
     background-color: white;
     cursor: pointer;
@@ -31,4 +36,8 @@
 .button_prime:focus {
     background-color: rgb(212, 52, 212);
     color: white;
+}
+
+.label_block {
+    display: block;
 }
