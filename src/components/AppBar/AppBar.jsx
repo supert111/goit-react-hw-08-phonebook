@@ -1,12 +1,12 @@
 import Navigation from '../Navigation/Navigation';
-import Registration from '../Registration/Registration';
+import AuthNav from '../AuthNav/AuthNav';
 import styles from '../AppBar/AppBar.module.css';
 
 const AppBar = () => {
   return (
     <header className={styles.AppBar}>
       <Navigation />
-      <Registration />
+      <AuthNav />
     </header>
   );
 };

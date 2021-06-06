@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Switch, Route } from 'react-router-dom';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
 import ContactsView from './views/ContactsView';
+import RegisterView from './views/RegisterView';
+import routes from './components/routes';
 // import ContactForm from "./components/ContactForm";
 // import ContactList from "./components/ContactList";
 // import Filter from "./components/Filter";
@@ -25,15 +28,14 @@ class App extends Component {
         return (
             <Container>
                 <AppBar />
-                <ContactsView />
-                {/* <div className={styles.wrapper}>
-                    <h1>Phonebook</h1>
-                    <ContactForm /> 
-                    <h2>Contacts</h2>
-                    <Filter /> 
-                    {this.props.isLoading && <h1>Loading...</h1>}
-                    <ContactList />
-                </div> */}
+                {/* <ContactsView /> */}
+            
+                <Switch>
+                    {/* <Route exact path="/" component={HomeView} /> */}
+                    <Route path={routes.register} component={RegisterView} />
+                    {/* <Route path="/login" component={LoginView} /> */}
+                    <Route path={routes.contacts} component={ContactsView} />
+                </Switch>
             </Container>
         )
     }

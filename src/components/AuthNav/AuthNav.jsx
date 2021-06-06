@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../routes';
-import styles from './Registration.module.css';
+import styles from './AuthNav.module.css';
 
-const Registration = () => (
+const AuthNav = () => (
     <nav className={styles.Registr}>
         <NavLink exact 
         to={routes.register}
@@ -20,4 +20,4 @@ const Registration = () => (
     </nav>
 )
 
-export default Registration;
+export default AuthNav;
