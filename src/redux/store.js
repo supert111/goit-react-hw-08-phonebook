@@ -9,6 +9,7 @@ import {
 } from 'redux-persist';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import contactsReducer from './contacts/contacts-reducer';
+import authReduser from './auth/auth-reducer';
 import logger from 'redux-logger';
 
 
@@ -19,7 +20,8 @@ const middleware = [...getDefaultMiddleware({
 }), logger]
 
 const store = configureStore({
-  reducer: { state: contactsReducer },
+  reducer: { state: contactsReducer,
+    auth: authReduser, },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
