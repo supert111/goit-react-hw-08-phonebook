@@ -1,4 +1,4 @@
-
+import { connect } from 'react-redux';
 
 
 const UserMenu = ({name, onLogout}) => (
@@ -10,5 +10,13 @@ const UserMenu = ({name, onLogout}) => (
     </div>
 )
 
+const mapStateToProps = state => ({
+    //name: authSelectors.getUsername(state),
+  });
+  
+  const mapDispatchToProps = {
+    //onLogout: authOperations.logOut,
+  };
 
-export default UserMenu;
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

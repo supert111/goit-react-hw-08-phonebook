@@ -1,7 +1,9 @@
 import { Component } from "react";
+import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import Container from '../../components/Container';
 import styles from './RegisterView.module.css';
+import { authOperations } from '../../redux/auth';
 
 class RegisterView extends Component {
     state = {
@@ -57,4 +59,9 @@ class RegisterView extends Component {
 
 }
 
-export default RegisterView;
+const mapDispatchToProps = {
+    onRegister: authOperations.register,
+}
+
+
+export default connect(null, mapDispatchToProps)(RegisterView);
