@@ -4,7 +4,7 @@ import {authSelectors} from '../../redux/auth';
 
 const HomeView = ({name}) => (
     <section className={styles.hero}>
-        <h1 className={styles.hero_title}>Wellcome, {name}</h1>
+        <h1 className={styles.hero_title}>Wellcome, <span className={styles.hero_name}>{name}</span></h1>
     </section>
 )
 

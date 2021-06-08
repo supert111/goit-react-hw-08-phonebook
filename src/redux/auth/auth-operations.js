@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { cloneElement } from 'react';
 import authActions  from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -57,18 +56,18 @@ const logIn = credentials => async dispatch => {
  *
  * 1. После успешного логаута, удаляем токен из HTTP-заголовка
  */
-// const logOut = () => async dispatch => {
-//   dispatch(authActions.logoutRequest());
+const logOut = () => async dispatch => {
+  dispatch(authActions.logoutRequest());
 
-//   try {
-//     await axios.post('/users/logout');
+  try {
+    await axios.post('/users/logout');
 
-//     token.unset();
-//     dispatch(authActions.logoutSuccess());
-//   } catch (error) {
-//     dispatch(authActions.logoutError(error.message));
-//   }
-// };
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error.message));
+  }
+};
 
 /*
  * GET @ /users/current
@@ -79,26 +78,26 @@ const logIn = credentials => async dispatch => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
 
-//   if (!persistedToken) {
-//     return;
-//   }
+  if (!persistedToken) {
+    return;
+  }
 
-//   token.set(persistedToken);
-//   dispatch(authActions.getCurrentUserRequest());
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
 
-//   try {
-//     const response = await axios.get('/users/current');
+  try {
+    const response = await axios.get('/users/current');
 
-//     dispatch(authActions.getCurrentUserSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.getCurrentUserError(error.message));
-//   }
-// };
+    dispatch(authActions.getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error.message));
+  }
+};
 
-//export default { register, logOut, logIn, getCurrentUser };
-export default { register, logIn, };
+export default { register, logOut, logIn, getCurrentUser };
+
