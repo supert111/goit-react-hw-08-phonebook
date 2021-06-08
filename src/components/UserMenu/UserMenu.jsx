@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import styles from './UserMenu.module.css';
+import {authSelectors} from '../../redux/auth';
 
 
 const UserMenu = ({name, onLogout}) => (
-    <div>
-        <span>Welcome, {name}</span>
-        <button type="button" onClick={onLogout}>
+    <div className={styles.Login}>
+        <span className={styles.title}>Welcome, {name}</span>
+        <Button variant="warning" size="sm" type="button" onClick={onLogout}>
             Logout
-        </button>
+        </Button>{' '}
     </div>
 )
 
 const mapStateToProps = state => ({
-    //name: authSelectors.getUsername(state),
+    name: authSelectors.getUsername(state),
   });
   
   const mapDispatchToProps = {

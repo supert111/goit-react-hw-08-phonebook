@@ -1,16 +1,17 @@
 import axios from 'axios';
+import { cloneElement } from 'react';
 import authActions  from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const token = {}
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
+export const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`; //Bearer - носитель
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 /*
  * POST @ /users/signup
@@ -23,8 +24,6 @@ export const register = credentials => async dispatch => {
 
     try {
         const response = await axios.post('/users/signup', credentials);
-
-        //token.set(response.data.token);
         dispatch(authActions.registerSuccess(response.data));
     } catch (error) {
         dispatch(authActions.registerError(error.message));
@@ -38,18 +37,18 @@ export const register = credentials => async dispatch => {
  *
  * После успешного логина добавляем токен в HTTP-заголовок
  */
-// const logIn = credentials => async dispatch => {
-//   dispatch(authActions.loginRequest());
+const logIn = credentials => async dispatch => {
+  dispatch(authActions.loginRequest());
 
-//   try {
-//     const response = await axios.post('/users/login', credentials);
+  try {
+    const response = await axios.post('/users/login', credentials);
 
-//     token.set(response.data.token);
-//     dispatch(authActions.loginSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.loginError(error.message));
-//   }
-// };
+    token.set(response.data.token);
+    dispatch(authActions.loginSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
+};
 
 /*
  * POST @ /users/logout
@@ -102,4 +101,4 @@ export const register = credentials => async dispatch => {
 // };
 
 //export default { register, logOut, logIn, getCurrentUser };
-export default { register };
+export default { register, logIn, };
