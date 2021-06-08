@@ -7,3 +7,7 @@
 .Login{
     margin-left: auto;
 }
+
+.login_name {
+    color: orangered;
+}

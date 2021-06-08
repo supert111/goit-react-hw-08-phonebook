@@ -7,6 +7,8 @@ import RegisterView from './views/RegisterView/index';
 import LoginView from "./views/LoginView/index";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import routes from './components/routes';
+import {authOperations} from './redux/auth';
+import { connect } from 'react-redux';
 // import ContactList from "./components/ContactList";
 // import Filter from "./components/Filter";
 //import { fetchContacts, getIsLoading } from './redux/contacts';
@@ -16,9 +18,9 @@ class App extends Component {
 
     // state = {};
 
-    // componentDidMount() {
-    //     this.props.fetchContact();
-    // }
+    componentDidMount() {
+        this.props.onGetCurretnUser();
+    }
 
     // handleFilter = (element) => {
     //     const { value } = element.target;
@@ -41,13 +43,8 @@ class App extends Component {
     }
 }
   
-// const mapStateToProps = state => ({
-//     isLoading: getIsLoading(state),
-// });
+const mapDispatchToProps = {
+    onGetCurretnUser: authOperations.getCurrentUser,
+  };
 
-// const mapDispatchToProps = dispatch => ({
-//     fetchContact: () => dispatch(fetchContacts()),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-export default App;
+export default connect(null, mapDispatchToProps)(App);
