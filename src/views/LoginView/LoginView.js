@@ -1,7 +1,9 @@
 import { Component } from "react";
+import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import Container from '../../components/Container';
 import styles from './LoginView.module.css';
+import { authOperations } from '../../redux/auth';
 
 class LoginView extends Component {
     state = {
@@ -16,7 +18,7 @@ class LoginView extends Component {
     handleSubmit = e => {
         e.preventDefault();
     
-        this.props.onRegister(this.state);
+        this.props.onLogin(this.state);
     
         this.setState({ name: '', email: '', password: '' });
     };
@@ -24,11 +26,15 @@ class LoginView extends Component {
     render() {
         return (
             <Container>
-                <Form className={styles.form}>
+                <Form className={styles.form} onSubmit={this.handleSubmit}>
 
                     <Form.Group className={styles.form_group} controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email" 
+                            name="email"
+                            onChange={this.handleChange}/>
                         <Form.Text className="text-muted">
                             Please write down your registered email.
                         </Form.Text>
@@ -36,7 +42,11 @@ class LoginView extends Component {
 
                     <Form.Group className={styles.form_group} controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Password" 
+                            name="password"
+                            onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
@@ -49,4 +59,9 @@ class LoginView extends Component {
 
 }
 
-export default LoginView;
+const mapDispatchToProps = {
+    onLogin: authOperations.logIn,
+}
+
+
+export default connect(null, mapDispatchToProps)(LoginView);

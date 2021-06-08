@@ -15,38 +15,51 @@ class RegisterView extends Component {
     handleChange = ({ target: { name, value } }) => {
         this.setState({ [name]: value });
     };
-    
+        
     handleSubmit = e => {
         e.preventDefault();
-    
+        
         this.props.onRegister(this.state);
-    
+        
         this.setState({ name: '', email: '', password: '' });
     };
-
+        
     render() {
         return (
             <Container>
-                <Form className={styles.form}>
-                    <Form.Group className={styles.form_group} controlId="formBasicName">
+                <Form className={styles.form} onSubmit={this.handleSubmit}>
+                    <Form.Group className={styles.form_group} controlId="formBasicName" >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name" />
-                        <Form.Text className="text-muted">
+                        <Form.Control 
+                            type="text" 
+                            name="name"
+                            placeholder="Enter name" 
+                            onChange={this.handleChange}/>
+                        <Form.Text className="text-muted" >
                             We'll never share your name with anyone else.
                         </Form.Text>
+                    
                     </Form.Group>
 
-                    <Form.Group className={styles.form_group} controlId="formBasicEmail">
+                    <Form.Group className={styles.form_group} controlId="formBasicEmail" >
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control 
+                            type="email" 
+                            name="email"
+                            placeholder="Enter email" 
+                            onChange={this.handleChange}/>
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
 
-                    <Form.Group className={styles.form_group} controlId="formBasicPassword">
+                    <Form.Group className={styles.form_group} controlId="formBasicPassword" >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control 
+                            type="password"
+                            name="password"
+                            placeholder="Password" 
+                            onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
