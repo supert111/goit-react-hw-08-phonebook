@@ -26,11 +26,12 @@ class LoginView extends Component {
     render() {
         return (
             <Container>
+                <h1 className={styles.title_login}>Please log in</h1>
                 <Form className={styles.form} onSubmit={this.handleSubmit}>
 
                     <Form.Group className={styles.form_group} controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control 
+                        <Form.Label className={styles.form_label}>Email address</Form.Label>
+                        <Form.Control
                             type="email" 
                             placeholder="Enter email" 
                             name="email"
@@ -41,8 +42,8 @@ class LoginView extends Component {
                     </Form.Group>
 
                     <Form.Group className={styles.form_group} controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control 
+                        <Form.Label className={styles.form_label}>Password</Form.Label>
+                        <Form.Control
                             type="password" 
                             placeholder="Password" 
                             name="password"

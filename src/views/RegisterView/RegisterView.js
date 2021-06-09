@@ -27,9 +27,10 @@ class RegisterView extends Component {
     render() {
         return (
             <Container>
+                <h1 className={styles.title_register}>Please register</h1>
                 <Form className={styles.form} onSubmit={this.handleSubmit}>
                     <Form.Group className={styles.form_group} controlId="formBasicName" >
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label className={styles.form_label}>Name</Form.Label>
                         <Form.Control 
                             type="text" 
                             name="name"
@@ -42,7 +43,7 @@ class RegisterView extends Component {
                     </Form.Group>
 
                     <Form.Group className={styles.form_group} controlId="formBasicEmail" >
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label className={styles.form_label}>Email address</Form.Label>
                         <Form.Control 
                             type="email" 
                             name="email"
@@ -54,7 +55,7 @@ class RegisterView extends Component {
                     </Form.Group>
 
                     <Form.Group className={styles.form_group} controlId="formBasicPassword" >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className={styles.form_label}>Password</Form.Label>
                         <Form.Control 
                             type="password"
                             name="password"

@@ -11,9 +11,5 @@ const HomeView = ({name}) => (
 const mapStateToProps = state => ({
     name: authSelectors.getUsername(state),
   });
-  const mapDispatchToProps = {
-    //onLogout: authOperations.logOut,
-  };
 
-//export default HomeView;
-export default connect(mapStateToProps, mapDispatchToProps)(HomeView);
+export default connect(mapStateToProps)(HomeView);
