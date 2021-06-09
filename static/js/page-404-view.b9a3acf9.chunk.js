@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-08-phonebook"]=this["webpackJsonpgoit-react-hw-08-phonebook"]||[]).push([[2],{113:function(t,e,o){"use strict";o.r(e);var r=o(95),p=o.n(r),n=o(1);e.default=function(){return Object(n.jsx)("h1",{className:p.a.title_error,children:" Error 404 (Page not found) "})}},95:function(t,e,o){t.exports={wrapper:"App_wrapper__1sVCB",title_Phonebook:"App_title_Phonebook__2vxh3",title_Contacts:"App_title_Contacts__whCrV",title_error:"App_title_error__3XKq8"}}}]);
+//# sourceMappingURL=page-404-view.b9a3acf9.chunk.js.map
