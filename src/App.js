@@ -1,18 +1,18 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
-//import LoginView from "./views/LoginView/index";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import routes from './components/routes';
 import {authOperations} from './redux/auth';
 import { connect } from 'react-redux';
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import Spinner from 'react-bootstrap/Spinner';
 
-const HomeView = lazy(() => import('./views/HomeView'));
-const RegisterView = lazy(() => import('./views/RegisterView'));
-const LoginView = lazy(() => import('./views/LoginView'));
-const ContactsView = lazy(() => import('./views/ContactsView'));
+const HomeView = lazy(() => import('./views/HomeView' /* webpackChunkName: "home-view" */));
+const RegisterView = lazy(() => import('./views/RegisterView' /* webpackChunkName: "register-view" */));
+const LoginView = lazy(() => import('./views/LoginView' /* webpackChunkName: "login-view" */));
+const ContactsView = lazy(() => import('./views/ContactsView' /* webpackChunkName: "contacts-view" */));
 const NotFoundView = lazy(() => 
     import('./views/NotFoundView' /* webpackChunkName: "page-404-view" */)
 );
@@ -28,7 +28,7 @@ class App extends Component {
             <>
                 <AppBar />
             
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense fallback={<Spinner animation="grow" variant="secondary" />}>
                     <Switch>
                         <PublicRoute exact path={routes.home} component={HomeView} />
                         <PrivateRoute path={routes.contacts} component={ContactsView} redirectTo={routes.login}/>

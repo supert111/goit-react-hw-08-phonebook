@@ -24,6 +24,7 @@ class LoginView extends Component {
     };
 
     render() {
+        const { email, password } = this.state;
         return (
             <Container>
                 <h1 className={styles.title_login}>Please log in</h1>
@@ -35,6 +36,7 @@ class LoginView extends Component {
                             type="email" 
                             placeholder="Enter email" 
                             name="email"
+                            value={email}
                             onChange={this.handleChange}/>
                         <Form.Text className="text-muted">
                             Please write down your registered email.
@@ -47,6 +49,7 @@ class LoginView extends Component {
                             type="password" 
                             placeholder="Password" 
                             name="password"
+                            value={password}
                             onChange={this.handleChange}/>
                     </Form.Group>
 
