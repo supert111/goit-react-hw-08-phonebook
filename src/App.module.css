@@ -25,3 +25,8 @@
 .title_error {
     text-align: center;
 }
+
+.spinner_style {
+    display: flex;
+    justify-content: center;
+}

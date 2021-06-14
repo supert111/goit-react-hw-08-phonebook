@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Spinner from 'react-bootstrap/Spinner';
+import styles from './App.module.css';
 
 const HomeView = lazy(() => import('./views/HomeView' /* webpackChunkName: "home-view" */));
 const RegisterView = lazy(() => import('./views/RegisterView' /* webpackChunkName: "register-view" */));
@@ -28,7 +29,11 @@ class App extends Component {
             <>
                 <AppBar />
             
-                <Suspense fallback={<Spinner animation="grow" variant="secondary" />}>
+                <Suspense fallback={<div className={styles.spinner_style}>
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="success" />
+                    <Spinner animation="grow" variant="primary" />
+                    </div>}>
                     <Switch>
                         <PublicRoute exact path={routes.home} component={HomeView} />
                         <PrivateRoute path={routes.contacts} component={ContactsView} redirectTo={routes.login}/>
